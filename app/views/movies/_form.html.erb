@@ -1,0 +1,35 @@
+<!-- app/views/movies/_form.html.erb -->
+<div class="container">
+  <h1 class="my-4"><%= movie.new_record? ? "Agregar Película" : "Editar Película" %></h1>
+
+  <%= form_with(model: movie, local: true, class: "form-container") do |form| %>
+    <!-- Error Messages -->
+    <% if movie.errors.any? %>
+      <div class="alert alert-danger">
+        <h4 class="alert-heading">Oops! Hubo algunos errores:</h4>
+        <ul class="mb-0">
+          <% movie.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- Form Fields -->
+    <div class="card">
+      <div class="card-body">
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-control", placeholder: "Ingrese el nombre de la película" %>
+
+        <div class="mb-3 mt-3">
+          <%= form.label :client_id, class: "form-label" %>
+          <%= form.select :client_id, options_for_select(@clients), { include_blank: "Seleccione un cliente" }, class: "form-select" %>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
+          <%= form.submit class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,13 @@
+<!-- app/views/movies/index.html.erb -->
+<p class="text-success"><%= notice %></p>
+
+<div class="container">
+  <h1 class="my-4">Peliculas</h1>
+  <%= link_to "Agregar Pelicula", new_movie_path, class: "btn btn-success mb-3" %>
+  
+  <div class="row">
+    <% @movies.each do |movie| %>
+      <%= render partial: "movie", locals: { movie: movie } %>
+    <% end %>
+  </div>
+</div>

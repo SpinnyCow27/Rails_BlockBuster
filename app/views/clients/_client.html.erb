@@ -1,0 +1,12 @@
+<!-- app/views/clients/_client.html.erb -->
+<tr id="<%= dom_id client %>">
+  <th scope="row"><%= client.id %></th>
+  <td><%= client.name %></td>
+  <td><%= client.age %></td>
+  <td><%= client.movies.last %></td>
+  <td><%= link_to "Show", client, class: "btn btn-info btn-sm" %></td>
+  <td><%= link_to "Edit", edit_client_path(client), class: "btn btn-warning btn-sm" %></td>
+  <td>
+    <%= button_to "Destroy", client, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+  </td>
+</tr>
